@@ -3,7 +3,7 @@ FROM tensorflow/tensorflow:2.4.1-gpu
 #FROM nvcr.io/nvidia/tensorflow:20.01-tf1-py3
 RUN /usr/bin/python3 -m pip install --upgrade pip
 RUN pip3 install setuptools --upgrade
-RUN pip3 install opencv-python sklearn socketio eventlet Pillow flask keras python-socketio
+RUN pip3 install opencv-python sklearn eventlet Pillow flask keras python-socketio==4.2.1 pandas 	moviepy
 
 RUN apt-get update 
 RUN apt-get install ffmpeg libsm6 libxext6 netbase -y
