@@ -12,7 +12,7 @@ The goals / steps of this project are the following:
 * Summarize the results with a written report
 
 [//]: # (Image References)
-[image1]: ./pictures/graphic.png "Loss evolution graphics"
+[image1]: ./figures/graphic.png "Loss evolution graphics"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
