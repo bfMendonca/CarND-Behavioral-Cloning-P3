@@ -11,16 +11,8 @@ The goals / steps of this project are the following:
 * Test that the model successfully drives around track one without leaving the road
 * Summarize the results with a written report
 
-
 [//]: # (Image References)
-
-[image1]: ./examples/placeholder.png "Model Visualization"
-[image2]: ./examples/placeholder.png "Grayscaling"
-[image3]: ./examples/placeholder_small.png "Recovery Image"
-[image4]: ./examples/placeholder_small.png "Recovery Image"
-[image5]: ./examples/placeholder_small.png "Recovery Image"
-[image6]: ./examples/placeholder_small.png "Normal Image"
-[image7]: ./examples/placeholder_small.png "Flipped Image"
+[image1]: ./pictures/graphic.png "Loss evolution graphics"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
@@ -100,7 +92,9 @@ Model: "NVIDIANetV5"
 |lambda_1 (Lambda)          |  (None, 1)           |  0        |
 
 Tot|al params: 348,219
+
 Trainable params: 348,219
+
 Non-trainable params: 0
 
 
@@ -131,7 +125,9 @@ For the final layer, responsible for estimating the final output, dropout whas n
 The adam optmizer was used, and the training paramters can be seen at line 347, 348 and 349 of "model.py", and "retrain.py", but for documenting reasons those are:
 
 BATCH_SIZE=64
+
 LEARNING_RATE=1e-4
+
 EPOCHS=5
 
 One importante note here is that this EPOCHS value is used for each call of "retrain.py", but the total number of epochs was not 5. In order to make the training more "automatic", an script named "batch_training.sh" was written and countains the following:
@@ -166,3 +162,5 @@ Using the left and right cameras and trying to generate more data could not lead
 For shuffling and splitting the dataset, as some flags become ununsable on "model.fit()" when using generators, the Pandas library was used in order to read the CSV, split the data into training and validation and then shuffling the results. This procedure is documented at lines 380, 381, 382 and 383. The result of this proccess was two Pandas DataFrame objects, "train" and "valid", passed down to the generator in order to load the images and generate the arrays.
 
 As the training proccess also became "split" due to the need to use the "retrain.py" script to workaround the memory leak, one procces found was to use TensorBoard to log the evolution though the proccess. For that a tensorboard_callback was used, line 352 and the passed down to the 'model.fit(..[tensorboard_callback])' so that the training metrics could be saved and then seem at the Tensorboard interface. The "logdir", needed by the tensorboard, received the "model.name" so that those different architecture could be training and the metrics would note be "mixed up". 
+
+![alt text][image1]
