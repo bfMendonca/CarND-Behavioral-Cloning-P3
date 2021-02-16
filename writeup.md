@@ -80,43 +80,28 @@ This was the best "catalaling" mechanism that was found during development to ke
 
 As mentioned before the architecture used for submission was the "NVIDIANetV5" which was heavily based on the NVIDIA presented during the classes. Other version were testes but presented poor performances compared to that. To better describe the network architecture, the "mode.sumary" is presented as outputed at the terminal:
 Model: "NVIDIANetV5"
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-lambda (Lambda)              (None, 160, 320, 3)       0         
-_________________________________________________________________
-cropping2d (Cropping2D)      (None, 65, 320, 3)        0         
-_________________________________________________________________
-conv2d (Conv2D)              (None, 31, 158, 24)       1824      
-_________________________________________________________________
-conv2d_1 (Conv2D)            (None, 14, 77, 36)        21636     
-_________________________________________________________________
-conv2d_2 (Conv2D)            (None, 5, 37, 48)         43248     
-_________________________________________________________________
-conv2d_3 (Conv2D)            (None, 3, 35, 64)         27712     
-_________________________________________________________________
-conv2d_4 (Conv2D)            (None, 1, 33, 64)         36928     
-_________________________________________________________________
-flatten (Flatten)            (None, 2112)              0         
-_________________________________________________________________
-dense (Dense)                (None, 100)               211300    
-_________________________________________________________________
-dropout (Dropout)            (None, 100)               0         
-_________________________________________________________________
-dense_1 (Dense)              (None, 50)                5050      
-_________________________________________________________________
-dropout_1 (Dropout)          (None, 50)                0         
-_________________________________________________________________
-dense_2 (Dense)              (None, 10)                510       
-_________________________________________________________________
-dense_3 (Dense)              (None, 1)                 11        
-_________________________________________________________________
-lambda_1 (Lambda)            (None, 1)                 0         
-=================================================================
-Total params: 348,219
+
+|Layer (type)               |  Output Shape        |  Param #   
+|lambda (Lambda)            |  (None, 160, 320, 3) |  0         
+|cropping2d (Cropping2D)    |  (None, 65, 320, 3)  |  0         
+|conv2d (Conv2D)            |  (None, 31, 158, 24) |  1824      
+|conv2d_1 (Conv2D)          |  (None, 14, 77, 36)  |  21636     
+|conv2d_2 (Conv2D)          |  (None, 5, 37, 48)   |  43248     
+|conv2d_3 (Conv2D)          |  (None, 3, 35, 64)   |  27712     
+|conv2d_4 (Conv2D)          |  (None, 1, 33, 64)   |  36928     
+|flatten (Flatten)          |  (None, 2112)        |  0         
+|dense (Dense)              |  (None, 100)         |  211300    
+|dropout (Dropout)          |  (None, 100)         |  0         
+|dense_1 (Dense)            |  (None, 50)          |  5050      
+|dropout_1 (Dropout)        |  (None, 50)          |  0         
+|dense_2 (Dense)            |  (None, 10)          |  510       
+|dense_3 (Dense)            |  (None, 1)           |  11        
+|lambda_1 (Lambda)          |  (None, 1)           |  0         
+|===========================|======================| ==========
+
+Tot|al params: 348,219
 Trainable params: 348,219
 Non-trainable params: 0
-_________________________________________________________________
 
 
 One addition that was made was an output "Lambda Layer" to understand how to make the Network output more generic. For this, using an simplification for the "Ackerman vehicle model", one can verify that the the inverse of the vehicle turning radius, 1/R, tan be described as the tan(alpha)/l, where alpha is the turning radius and the l is the vehicle wheelbase. As the more "generic" output seems to be this inverse of turning Radius, r=1/R, then the steering angle could be isolated as being: alpha = atan(l*r). Assuming that the network output should be this r, the final lambda layer added was proposed in order to conver from r to alpha, and then from radians to deegres to be feed out to the vehicle, as the expeted input for the vehicle was the steering angle in deegres. 
