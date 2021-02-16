@@ -119,6 +119,12 @@ Non-trainable params: 0
 _________________________________________________________________
 
 
+One addition that was made was an output "Lambda Layer" to understand how to make the Network output more generic. For this, using an simplification for the "Ackerman vehicle model", one can verify that the the inverse of the vehicle turning radius, 1/R, tan be described as the tan(alpha)/l, where alpha is the turning radius and the l is the vehicle wheelbase. As the more "generic" output seems to be this inverse of turning Radius, r=1/R, then the steering angle could be isolated as being: alpha = atan(l*r). Assuming that the network output should be this r, the final lambda layer added was proposed in order to conver from r to alpha, and then from radians to deegres to be feed out to the vehicle, as the expeted input for the vehicle was the steering angle in deegres. 
+
+This procedure is presented in all tested network architectures, besides the first one, "NVIDIANetV0". Comparing the output of "NVIDIANetV0" and "NVIDIANetV2", the "NVIDIANetV2" seemed to be more "stable", with more smooth steering angle, so this pattern was assumed to be "positive", and the following architectures inherited that "output lambda layer".
+
+For the submited architectured, NVIDIANetV5, this lambda layer can be seen at line 200. 
+
 #### 2. Attempts to reduce overfitting in the model
 
 To reduce the overfit some testings were made using dropout at the output portion of the network, more specifically, at its dense layers. More specifically The differences between networks versions 4, 5 and 6 were regarding the dropout rate between the dense layers at the end of the Network. 
