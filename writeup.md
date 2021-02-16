@@ -81,23 +81,23 @@ This was the best "catalaling" mechanism that was found during development to ke
 As mentioned before the architecture used for submission was the "NVIDIANetV5" which was heavily based on the NVIDIA presented during the classes. Other version were testes but presented poor performances compared to that. To better describe the network architecture, the "mode.sumary" is presented as outputed at the terminal:
 Model: "NVIDIANetV5"
 
-|Layer (type)               |  Output Shape        |  Param #   
-|lambda (Lambda)            |  (None, 160, 320, 3) |  0         
-|cropping2d (Cropping2D)    |  (None, 65, 320, 3)  |  0         
-|conv2d (Conv2D)            |  (None, 31, 158, 24) |  1824      
-|conv2d_1 (Conv2D)          |  (None, 14, 77, 36)  |  21636     
-|conv2d_2 (Conv2D)          |  (None, 5, 37, 48)   |  43248     
-|conv2d_3 (Conv2D)          |  (None, 3, 35, 64)   |  27712     
-|conv2d_4 (Conv2D)          |  (None, 1, 33, 64)   |  36928     
-|flatten (Flatten)          |  (None, 2112)        |  0         
-|dense (Dense)              |  (None, 100)         |  211300    
-|dropout (Dropout)          |  (None, 100)         |  0         
-|dense_1 (Dense)            |  (None, 50)          |  5050      
-|dropout_1 (Dropout)        |  (None, 50)          |  0         
-|dense_2 (Dense)            |  (None, 10)          |  510       
-|dense_3 (Dense)            |  (None, 1)           |  11        
-|lambda_1 (Lambda)          |  (None, 1)           |  0         
-|===========================|======================| ==========
+|Layer (type)               |  Output Shape        |  Param #  |
+|---------------------------|:--------------------:|-----------|
+|lambda (Lambda)            |  (None, 160, 320, 3) |  0        |
+|cropping2d (Cropping2D)    |  (None, 65, 320, 3)  |  0        |
+|conv2d (Conv2D)            |  (None, 31, 158, 24) |  1824     |
+|conv2d_1 (Conv2D)          |  (None, 14, 77, 36)  |  21636    |
+|conv2d_2 (Conv2D)          |  (None, 5, 37, 48)   |  43248    |
+|conv2d_3 (Conv2D)          |  (None, 3, 35, 64)   |  27712    |
+|conv2d_4 (Conv2D)          |  (None, 1, 33, 64)   |  36928    |
+|flatten (Flatten)          |  (None, 2112)        |  0        |
+|dense (Dense)              |  (None, 100)         |  211300   |
+|dropout (Dropout)          |  (None, 100)         |  0        |
+|dense_1 (Dense)            |  (None, 50)          |  5050     |
+|dropout_1 (Dropout)        |  (None, 50)          |  0        |
+|dense_2 (Dense)            |  (None, 10)          |  510      |
+|dense_3 (Dense)            |  (None, 1)           |  11       |
+|lambda_1 (Lambda)          |  (None, 1)           |  0        |
 
 Tot|al params: 348,219
 Trainable params: 348,219
